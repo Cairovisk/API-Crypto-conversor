@@ -34,11 +34,11 @@ app.post("/", function(req, res){
     var data = JSON.parse(body);
     var price = JSON.price;
     // data.display_timestamp é o caminho para a data no JSON 
-    var currentDate = data.display_timestamp;
+    var currentDate = data.time;
 
     res.write("<p>The current Date is " + currentDate);
 
-    res.write("<h1> The current price of " + crypto + " is " + price + fiat + "</h1>");
+    res.write("<h1>" + amount + crypto + " is currently worth " + price + fiat + "</h1>");
 
     res.send(); 
 
