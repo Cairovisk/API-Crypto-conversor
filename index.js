@@ -17,13 +17,22 @@ app.post("/", function(req, res){
   var crypto = req.body.crypto;
   var fiat = req.body.fiat;
 
-  var defaultUrl = "https://apiv2.bitcoinaverage.com/indices/global/ticker/";
+  var amount = req.body.amount;
 
-  var completeUrl = defaultUrl + crypto + fiat;
+  var options = {
+    url: "https://apiv2.bitcoinaverage.com/indices/global",
+    methods: "GET",
+    qs: {
+      from: crypto,
+      to: fiat,
+      amount: amount
+    }
 
-  request(completeUrl, function(error, response, body){
+  }
+
+  request(options, function(error, response, body){
     var data = JSON.parse(body);
-    var price = JSON.last;
+    var price = JSON.price;
     // data.display_timestamp é o caminho para a data no JSON 
     var currentDate = data.display_timestamp;
 
